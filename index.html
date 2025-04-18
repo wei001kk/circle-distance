@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>圓周距離計算器</title>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; padding: 30px;">
+  <h2>圓周距離計算器</h2>
+  <p>輸入兩個圓的圓周長（大圓與小圓），輸出它們從小圓右邊到大圓頂的垂直距離。</p>
+
+  <div style="margin-top:20px;">
+    <label>小圓圓周長（cm）：<input id="c2" type="number" /></label><br/><br/>
+    <label>大圓圓周長（cm）：<input id="c1" type="number" /></label><br/><br/>
+    <button onclick="calc()">計算</button>
+  </div>
+
+  <h3 id="result" style="margin-top:30px;"></h3>
+
+  <script>
+    function calc() {
+      const c1 = parseFloat(document.getElementById('c1').value);
+      const c2 = parseFloat(document.getElementById('c2').value);
+      if (isNaN(c1) || isNaN(c2) || c1 <= c2) {
+        document.getElementById('result').innerText = "請輸入有效數值，且大圓需大於小圓";
+        return;
+      }
+      const R1 = c1 / (2 * Math.PI);
+      const R2 = c2 / (2 * Math.PI);
+      const d = R1 - Math.sqrt(R1 * R1 - R2 * R2);
+      document.getElementById('result').innerText = `垂直距離：約 ${d.toFixed(3)} 公分`;
+    }
+  </script>
+</body>
+</html>
