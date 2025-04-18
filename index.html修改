@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>圓周距離計算器</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+    label, input {
+      display: block;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>圓周距離計算器</h2>
+  <p>輸入兩個圓的圓周長（小圓與大圓），計算它們的垂直距離。</p>
+  <label>小圓圓周長：
+    <input id="small" type="number" />
+  </label>
+  <label>大圓圓周長：
+    <input id="big" type="number" />
+  </label>
+  <button onclick="calc()">計算距離</button>
+  <h3 id="result"></h3>
+
+  <script>
+    function calc() {
+      const π = Math.PI;
+      const r1 = parseFloat(document.getElementById('small').value) / (2 * π);
+      const r2 = parseFloat(document.getElementById('big').value) / (2 * π);
+      const d = r2 - Math.sqrt(r2**2 - r1**2);
+      document.getElementById('result').textContent = '垂直距離為：' + d.toFixed(2);
+    }
+  </script>
+</body>
+</html>
